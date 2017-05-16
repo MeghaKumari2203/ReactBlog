@@ -51,7 +51,7 @@ export default class postList extends React.Component {
     render() {
         return (
             <div>
-                <Link to={'/create'}>Create a new Post</Link>
+                <Link to={'create'}>Create a new Post</Link>
                 {
                     this.state.posts.map(post => {
                         return (<div key={post.id}>

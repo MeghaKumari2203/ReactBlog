@@ -5,7 +5,7 @@ import PostList from './components/postList.jsx';
 import PostView from './components/postView.jsx';
 import PostForm from './components/postForm.jsx'
 // import {Router,Route,Link,hashHistory} from 'react-router';
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route ,HashRouter,Switch} from 'react-router-dom'
 
 
 // class postListWrapper extends React.Component{
@@ -17,12 +17,13 @@ import { BrowserRouter, Route } from 'react-router-dom'
 // }
 
 ReactDOM.render(
-    <BrowserRouter>
-        <div>
-            <Route path="/" component={PostList} />
-            <Route path="/app" component={App} />
-            <Route path="/create" component={PostForm} />
-            <Route path="/view/:postId" component={PostView} />
-        </div>
-    </BrowserRouter>
+    <HashRouter>
+        <Switch>
+           
+            <Route exact path="/app" component={App} />
+            <Route exact path="/create" component={PostForm} />
+            <Route path="view/:postId" component={PostView} />
+             <Route exact path="/"  component={PostList} />
+       </Switch>
+    </HashRouter>
     , document.getElementById('content'));
