@@ -23,42 +23,36 @@ export default class postList extends React.Component {
         this.loadPosts();
     }
 
+    createPost(){
+        this.props.history.push('/create')
+    }
+
     loadPosts() {
-        var postsAll = [
-            {
-                id: 1,
-                title: "Ankita",
-                content: "aswsdffghjkkjkbvcrt vcttcrtvybuyh"
-            },
-            {
-                id: 2,
-                title: "Megha",
-                content: "cfytgyvubhuinhj vcttcrtvybuyh"
-            },
-            {
-                id: 3,
-                title: "Prapti",
-                content: "kugobhkvhjk vcttcrtvybuyh"
-            },
-            {
-                id: 4,
-                title: "Nidhi",
-                content: "dcjkcdjkdjkd vcttcrtvybuyh"
-            }
-        ];
-        this.setState({ posts: postsAll })
+       
+        var url = this.props.url;
+        var key = this.props.apikey;
+        fetch(url + 'api/v2/mongodb/_table/post', {
+                method: 'GET', headers: {
+                    "X-DreamFactory-API-Key": key,
+                    "Content-Type": "application/json"
+                }
+                }).then((res)=>res.json()).then((res)=>
+        {
+                var post=res.resource;
+                this.setState({ posts: post })
+        });
     }
     render() {
         return (
             <div>
-                <Link to={'create'}>Create a new Post</Link>
+                <button onClick={this.createPost.bind(this)}>Create a new Post</button>
                 {
                     this.state.posts.map(post => {
-                        return (<div key={post.id}>
-                            <Link to={'/view/' + post.id}>GoTo view</Link>
-                            <label> {post.id} </label>
+                        return (<div key={post._id}>
+                            <Link to={'view/' + post._id}>
                             <h4> {post.title} </h4>
-                            <h6> {post.content} </h6>
+                            <h6>{ post.content}</h6>
+                    </Link>
                         </div>);
 
                     }
