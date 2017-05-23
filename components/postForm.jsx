@@ -49,9 +49,8 @@ export default class postForm extends React.Component {
         });
     }
     changeContentHandler(event) {
-        debugger;
         this.setState({
-            content: event.target.innerText
+            content: event.target.innerHTML
         })
     }
     save() {

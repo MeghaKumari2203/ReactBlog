@@ -1,4 +1,5 @@
 import React from 'react';
+import renderHTML from 'react-render-html';
 
 export default class postList extends React.Component {
 
@@ -6,7 +7,10 @@ export default class postList extends React.Component {
 
         super();
         this.state = {
-            post: {}
+            post: {
+                title:"",
+                content:""
+            }
         }
     }
     deletePost(event)
@@ -51,7 +55,8 @@ export default class postList extends React.Component {
                 <h2>
                     {this.state.post.title}
                 </h2>
-                <p>{this.state.post.content}</p>
+
+               {renderHTML(this.state.post.content)}
                 <button onClick={() => this.props.history.push('/create/' + this.state.post._id)}>Edit Post</button>
                  <button onClick={this.deletePost.bind(this)}>Delete</button>
             </div>

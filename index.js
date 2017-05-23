@@ -7,8 +7,8 @@ import PostForm from './components/postForm.jsx';
 import { BrowserRouter, Route ,HashRouter,Switch} from 'react-router-dom';
 
 
-const INSTANCE_URL = 'http://127.0.0.1/';
-const APP_API_KEY = 'b005c03b087bd76de110e91ceac647bb69549c8832697940b5ec6d334648ad87';
+const INSTANCE_URL = 'http://ec2-34-210-239-98.us-west-2.compute.amazonaws.com/';
+const APP_API_KEY = 'cc61dfb292de588c48f9eb39e0f9b61c527687c37a184eac3f43c34c6025246a';
 const VERSION = '1.0.1';
 
 class postListWrapper extends React.Component{

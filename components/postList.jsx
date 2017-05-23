@@ -1,13 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, withRouter, Link } from 'react-router-dom'
-
-// const PostItems=({post})=>
-// {
-//     return(
-//         <Link to="/view">
-//         </Link>
-//     )
-// }
+import renderHTML from 'react-render-html';
 
 
 export default class postList extends React.Component {
@@ -50,9 +43,9 @@ export default class postList extends React.Component {
                     this.state.posts.map(post => {
                         return (<div key={post._id}>
                             <Link to={'view/' + post._id}>
-                            <h4> {post.title} </h4>
-                            <h6>{ post.content}</h6>
-                    </Link>
+                            <h4> {post.title} </h4> </Link>
+                            {renderHTML(post.content)}
+                   
                         </div>);
 
                     }
